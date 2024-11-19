@@ -427,7 +427,7 @@
           <div
             v-if="showModal"
             :class="[
-              'fixed modal inset-0 z-50 flex items-end justify-center bg-gray-200 bg-opacity-20',
+              'fixed modal inset-0 modal-fixed flex items-end justify-center bg-gray-200 bg-opacity-20',
               modalAnimationClass,
             ]"
           >
@@ -2178,5 +2178,9 @@ line-height: 16.8px;
 
 .v-field__outline {
   display: none !important;
+}
+.modal-fixed {
+  z-index: 100 !important;
+  
 }
 </style>
