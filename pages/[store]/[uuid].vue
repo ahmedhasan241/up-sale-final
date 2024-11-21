@@ -90,7 +90,7 @@
                 spaceBetween: 10,
               },
             }"
-            class="mySwiper h-60 pt-2 my-6"
+            class="mySwiper h-60 pt-2 "
             @slideChange="onSlideChange"
             @swiper="onSwiperInit"
           >
@@ -111,7 +111,7 @@
           <div class="px-3 lg:px-5 " ref="detailsContent" v-if="selectedCardData">
             <div class="!w-full">
               <div
-                class="flex !w-full border-b pb-4 justify-around !px-0 lg:!px-5 border-box"
+                class="tabs-container border-b pb-4  !px-0 lg:!px-5 border-box"
               >
                 <button
                   v-for="(tab, index) in tabs"
@@ -266,21 +266,21 @@
                   </div>
                   <div v-else>
                     <!-- {{ usersReviews }} -->
-                    <div class="grid grid-cols-3 gap-[6px] md:gap-4 pb-16">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-[6px] md:gap-4 pb-16">
                       <div
                       v-for="card in usersReviews"
                       :key="card.id"
                       class="group w-full h-full rounded-lg relative mt-3"
                     >
-                      <div class="relative w-full !h-[300px] rounded-lg overflow-hidden group">
-                        <canvas
+                      <div class="relative w-full !h-[280px] md:!h-[280px] rounded-lg overflow-hidden group">
+                        <!-- <canvas
                           ref="canvas"
-                          class="thumbnail-canvas absolute inset-0 transition-opacity duration-300 group-hover:opacity-0"
+                          class="thumbnail-canvas absolute inset-0 transition-opacity duration-280 group-hover:opacity-0"
                           style="display: block"
-                        ></canvas>
+                        ></canvas> -->
                   
                         <video
-                          class="video w-full !h-[300px] object-cover rounded-lg video-height overflow-hidden"
+                          class="video w-full h-[280px] object-cover rounded-lg video-height overflow-hidden"
                           controls
                           :id="card.id"
                           v-if="card.video || (card.video && card.image)"
@@ -297,13 +297,13 @@
                           v-if="!(card.video || (card.video && card.image))"
                           :src="card.image"
                           :id="card.id"
-                          class=" w-full !h-[300px] object-cover rounded-lg overflow-hidden"
+                          class=" w-full h-[280px] object-cover rounded-lg overflow-hidden"
                           alt=""
                         />
                       </div>
                   
                       <div
-                        class="absolute !h-[300px] top-0 bottom-0 right-0 left-0 rounded-lg bg-gradient-custom overflow-hidden pointer-events-none group-hover:opacity-0 transition-opacity duration-300"
+                        class="absolute h-[280px] top-0 bottom-0 right-0 left-0 rounded-lg bg-gradient-custom overflow-hidden pointer-events-none group-hover:opacity-0 transition-opacity duration-300"
                       >
                         <div
                           class="flex flex-col gap-1 right-1 md:right-3 bottom-3 md:bottom-10 absolute rounded-lg"
@@ -424,12 +424,15 @@
           {{ campaignInfo?.payment_button_word }} 
           </button>
 
-          <div
-            v-if="showModal"
+          <v-dialog
+            v-model="showModal"
             :class="[
-              'fixed modal inset-0 modal-fixed flex items-end justify-center bg-gray-200 bg-opacity-20',
+              'fixed modal inset-0 modal-fixed flex items-end justify-center  bg-opacity-20',
               modalAnimationClass,
             ]"
+            max-width="500px"
+            transition="dialog-bottom-transition"
+            fullscreen
           >
             <!-- Modal Content -->
             <div
@@ -880,7 +883,7 @@
                     :removeGift="removeGift"
                   />
                   <div
-                    class="fixed bottom-0 inset-x-0 z-10 bg-white py-2 mt-4 !px-7 md:!px-11"
+                    class="fixed bottom-0 inset-x-0 z-10 bg-white py-2  !px-7 md:!px-11"
                   >
                     <div class="flex flex-col gap-2 justify-center w-full">
                       <div>
@@ -901,7 +904,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </v-dialog>
         </div>
       </template>
     </template>
@@ -2181,6 +2184,50 @@ line-height: 16.8px;
 }
 .modal-fixed {
   z-index: 100 !important;
-  
+  direction: rtl !important;
+
+}
+
+.tabs-container {
+  display: flex;
+  justify-content: space-around;
+  max-width: 100%;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-y: hidden; /* Hide vertical overflow */
+  white-space: nowrap; /* Prevent wrapping */
+  padding: 10px; /* Optional padding for better spacing */
+  scrollbar-width: thin; /* For Firefox: Thin scrollbar */
+  scrollbar-color: #ccc transparent; /* For Firefox: Custom scrollbar colors */
+}
+@media (max-width:567px) {
+  .tabs-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 390px;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Hide vertical overflow */
+    white-space: nowrap; /* Prevent wrapping */
+    padding: 10px; /* Optional padding for better spacing */
+    scrollbar-width: thin; /* For Firefox: Thin scrollbar */
+    scrollbar-color: #ccc transparent; /* For Firefox: Custom scrollbar colors */
+  }
+}
+
+
+.tabs-container::-webkit-scrollbar {
+  height: 3px; /* Horizontal scrollbar height */
+}
+
+.tabs-container::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Scrollbar thumb color */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.tabs-container::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa; /* Hover state for scrollbar thumb */
+}
+
+.tabs-container::-webkit-scrollbar-track {
+  background: transparent; /* Scrollbar track color */
 }
 </style>

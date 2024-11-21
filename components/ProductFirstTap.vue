@@ -7,8 +7,8 @@ defineProps({
 
 <template>
 <div>
-  <div class="flex flex-row align-middle justify-start gap-4 mb-4">
-    <h2 class="font-almarai text-[16px] font-semibold leading-[19.2px] text-right my-auto">
+  <div class="flex flex-row align-middle justify-start gap-2 mb-4">
+    <h2 class="font-almarai font-size font-semibold leading-[19.2px] text-right my-auto">
       {{ selected.name_ar }}
     </h2>
     <span class="number-purchases">
@@ -62,5 +62,13 @@ defineProps({
 .number-purchases .icon {
   font-size: 20px;
 }
+.font-size {
+  font-size: 16px ;
+}
 
+@media(max-width:385px) {
+  .font-size {
+    font-size: 14px;
+  }
+}
 </style>

@@ -216,11 +216,11 @@ color: black;
 }
 
 .modal-contain {
-    max-height: 90vh;
+    max-height: 100vh;
 }
 
 .content-modal {
-    max-height:75vh;
+    max-height:85vh;
     overflow-y: auto;
 }
 
@@ -545,4 +545,10 @@ line-height: 19.2px !important;
 }
 body {
     font-family: "Almarai", sans-serif !important;
+}
+
+.card-slider {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
 }

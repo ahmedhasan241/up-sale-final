@@ -23,13 +23,13 @@ const truncateText = (text, maxLength) => {
 <template>
   <Card
       :class="{
-              'border-black border-[2px] bg-white  scale-110': selected === card.id, // Highlight selected card
+              'border-black border-[2px] bg-white  scale ': selected === card.id, // Highlight selected card
               'border-white border-[2px] bg-white opacity-30': selected !== card.id, // Default card styling
             }"
-      class="cursor-pointer p-2 !w-[180px]  mt-2  !h-[180px] card-shadow   !rounded-lg  product-card"
+      class="cursor-pointer p-2 !w-[180px]  my-aut  !h-[180px] card-shadow   !rounded-lg  product-card"
   >
     <template #header>
-      <div class="w-full h-[96px] mb-2 card-image relative">
+      <di  class="w-full h-[96px] mb-2 card-image relative">
                 <span
                     class="discount-badge"
                     v-if="calculateDiscount(card.price, card.price_before_discount)"
@@ -42,7 +42,7 @@ const truncateText = (text, maxLength) => {
             alt="product image"
             :src="card.cover"
         />
-      </div>
+      </di>
     </template>
     <template #title>
       <div class=" flex flex-row justify-between">
@@ -68,6 +68,8 @@ const truncateText = (text, maxLength) => {
   </Card>
 </template>
 
-<style scoped lang="scss">
-
+<style scoped>
+.scale {
+  transform: scale(1.110) !important;
+}
 </style>
